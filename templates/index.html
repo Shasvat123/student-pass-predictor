@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pass Predictor</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 30px;
+      background-color: #f3f3f3;
+    }
+    h1 {
+      color: #2c3e50;
+    }
+    form {
+      margin-top: 20px;
+    }
+    input[type="number"] {
+      padding: 10px;
+      width: 200px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    button {
+      padding: 10px 20px;
+      border: none;
+      background: #2980b9;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+    .result {
+      margin-top: 20px;
+      font-size: 1.2em;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎓 Pass Predictor</h1>
+
+  <form method="POST" action="/predict">
+    <label>Enter hours studied:</label><br><br>
+    <input type="number" step="0.1" name="hours" required>
+    <button type="submit">Predict</button>
+  </form>
+
+  {% if prediction %}
+    <div class="result">
+      <p><strong>Prediction:</strong> {{ prediction }}</p>
+      <p><strong>Confidence:</strong> {{ confidence }}</p>
+    </div>
+  {% endif %}
+
+  {% if error %}
+    <p style="color:red;">{{ error }}</p>
+  {% endif %}
+
+</body>
+</html>
